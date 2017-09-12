@@ -6,160 +6,133 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lenovo.calculator.MainActivity"
-        android:orientation="horizontal"
         android:rowCount="8"
-        android:columnCount="4"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-                 <EditText
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:background="@android:drawable/alert_light_frame"
-                     android:layout_columnSpan="4"
-                     android:layout_rowSpan="3"
+        android:columnCount="4">
+
+
+                 <TextView
                      android:layout_columnWeight="1"
                      android:layout_rowWeight="1"
+                     android:layout_columnSpan="4"
+                     android:id="@+id/show"
+                     />
+
+                 <EditText
+                     android:id="@+id/display"
+
+                     android:layout_columnSpan="4"
+                     android:layout_columnWeight="1"
+                     android:layout_rowWeight="1"
+                     android:textAlignment="textEnd"
+                     android:hint="0"
                   />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_ce"
                     android:text="CE"
                    />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_c"
                     android:text="C"
                     />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:id="@+id/c_x"
+                    android:text="退格"
+                    />
+                <Button
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_div"
                     android:text="÷"
                    />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:id="@+id/c_X"
-                    android:text="X" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_seven"
                     android:text="7"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_eight"
                     android:text="8"
                    />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_nine"
                     android:text="9"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    android:id="@+id/c_delete"
-                    android:text="-"/>
+                    android:id="@+id/c_multiplay"
+                    android:text="×" />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_four"
                     android:text="4"
                     />
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_five"
                     android:text="5"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_six"
                     android:text="6"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    android:id="@+id/c_add"
+                    android:id="@+id/c_plus"
                     android:text="+"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_one"
                     android:text="1"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_two"
                     android:text="2"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_three"
                     android:text="3"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
-                    android:id="@+id/c_equal"
-                    android:text="="
-                    android:layout_rowSpan="2"/>
+                    android:id="@+id/c_minus"
+                    android:text="-"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_precent"
                     android:text="%"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_zero"
                     android:text="0"/>
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_rowWeight="1"
                     android:id="@+id/c_spot"
                     android:text="."/>
+                <Button
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:id="@+id/c_equal"
+                    android:text="="
+                    />
 
 
     </GridLayout>
