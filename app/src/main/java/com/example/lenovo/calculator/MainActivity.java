@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.c_spot:
                 String s6=display.getText().toString();
-                if(s.empty()
+                if(s6.equals("")
                         ||s.peek()==((Button) view).getText().toString())
                     display.setText("0"+((Button) view).getText().toString());
                 else
@@ -113,12 +113,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String s3=display.getText().toString();
                 if(s3.length()>0)
                     s.pop();
+                 if(s3.length()>0&&s3!=null)
                     s3 = s3.substring(0, s3.length() - 1);
                     if(s3.length()==0) {
-                        s3 = show.getText().toString();
-                        show.setText("");
+                        if(show.getText().length()>0&&show.getText()!=null) {
+                            s3 = show.getText().toString();
+                            show.setText("");
+                        }
                     }
-                display.setText(s3);
+                       display.setText(s3);
                 break;
             case R.id.c_minus:
             case R.id.c_multiplay:
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c_div:
                 if(s.empty()){
                     s.add(((Button) view).getText().toString());
-                    show.setText("0");
+                    show.setText(zero.getText().toString());
                     display.setText(((Button) view).getText());
                 }else {
                     if (s.peek() != plus.getText()
@@ -147,30 +150,96 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.c_precent:
-                if(s.peek()==spot.getText()){
-                    s.pop();
-                    display.setText("");
-                }
-                if(s.empty())
-                    display.setText("");
-                else{
                     String s4=display.getText().toString();
-                    String s5="";
-                    s5=s4.substring(0,1);
-                   if(s5!= plus.getText().toString()
-                            && s5!= minus.getText().toString()
-                            && s5!= multiplay.getText().toString()
-                            && s5!= div.getText().toString()){
-                       s5="";
-                   }else
+                    String s5=s4.substring(0,1);
+                   if(s5.equals("÷")||s5.equals("×")
+                           ||s5.equals("+")||s5.equals("-")){
                        s4=s4.substring(1);
+                   }else
+                      s5="";
                     double d = Double.parseDouble(s4);
                     d=d/100;
                     display.setText(s5+String.valueOf(d));
-                }
+                break;
+            case R.id.c_equal:
+                String s0=show.getText().toString()+display.getText().toString();
+                show.setText("");
+                display.setText("计算结果为："+result(s0));
                 break;
             default:
                 break;
         }
+    }
+
+    private String result(String s) {
+        ArrayList<String> number=new  ArrayList<String>();
+        ArrayList<String> sign=new ArrayList<String>();
+        String key;
+        String num="";
+        for(int i=1;i<s.length();i++){
+            key=s.substring(i-1,i);
+            if(isNum(key)){
+                num=num+key;
+            }else {
+                number.add(num);
+                num="";
+                sign.add(key);
+            }
+            int j=0;
+            while (!sign.isEmpty()){
+                if(sign.get(j).equals("÷")||sign.get(j).equals("×")) {
+                    if (sign.get(j).equals("÷")) {
+                        number.set(j,
+                                String.valueOf(div(number.get(j), number.get(j + 1))));
+                        number.remove(j+1);
+                        sign.remove(j);
+                    } else{
+                        number.set(j,
+                                String.valueOf(multiplay(number.get(j), number.get(j + 1))));
+                        number.remove(j+1);
+                        sign.remove(j);
+                    }
+                }else {
+                    if(sign.get(j).equals("+")){
+                        number.set(j,
+                                String.valueOf(plus(number.get(j), number.get(j + 1))));
+                        number.remove(j+1);
+                        sign.remove(j);
+                    }else{
+                        number.set(j,
+                                String.valueOf(minus(number.get(j), number.get(j + 1))));
+                        number.remove(j+1);
+                        sign.remove(j);
+                    }
+                }
+            }
+        }
+        return number.get(0);
+    }
+    private boolean isNum(String key){
+        if(key.equals("÷")||key.equals("×")
+                ||key.equals("+")||key.equals("-"))
+            return false;
+        return true;
+    }
+    private double plus(String x,String y){
+        double x1=Double.parseDouble(x);
+        double x2=Double.parseDouble(y);
+        return x1+x2;
+    }
+    private double minus(String x,String y){
+        double x1=Double.parseDouble(x);
+        double x2=Double.parseDouble(y);
+        return x1-x2;
+    }
+    private double multiplay(String x,String y){
+        double x1=Double.parseDouble(x);
+        double x2=Double.parseDouble(y);
+        return x1*x2;
+    }
+    private double div(String x,String y){
+        double x1=Double.parseDouble(x);
+        double x2=Double.parseDouble(y);
+        return x1/x2;
     }
 }
