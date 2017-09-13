@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        String st=display.getText().toString();
         switch (view.getId()){
             case R.id.c_zero:
             case R.id.c_one:
@@ -88,9 +87,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c_seven:
             case R.id.c_eight:
             case R.id.c_nine:
-            case R.id.c_spot:
+                String st=display.getText().toString();
                 s.add(((Button) view).getText().toString());
                 display.setText(st+((Button) view).getText());
+                break;
+            case R.id.c_spot:
+                String s6=display.getText().toString();
+                if(s.empty()
+                        ||s.peek()==((Button) view).getText().toString())
+                    display.setText("0"+((Button) view).getText().toString());
+                else
+                    display.setText(s6+((Button) view).getText());
+                s.add(((Button) view).getText().toString());
                 break;
             case R.id.c_ce:
                 display.setText("");
@@ -103,42 +111,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.c_x:
                 String s3=display.getText().toString();
-                if(s3.length()>0) {
+                if(s3.length()>0)
                     s.pop();
                     s3 = s3.substring(0, s3.length() - 1);
-                }
+                    if(s3.length()==0) {
+                        s3 = show.getText().toString();
+                        show.setText("");
+                    }
                 display.setText(s3);
                 break;
             case R.id.c_minus:
             case R.id.c_multiplay:
             case R.id.c_plus:
             case R.id.c_div:
-                if(show.getText()==null&&display.getText()==null){
-                    show.setText("");
-                    display.setText("");
+                if(s.empty()){
+                    s.add(((Button) view).getText().toString());
+                    show.setText("0");
+                    display.setText(((Button) view).getText());
+                }else {
+                    if (s.peek() != plus.getText()
+                            && s.peek() != minus.getText()
+                            && s.peek() != multiplay.getText()
+                            && s.peek() != div.getText()) {
+                        String s1 = display.getText().toString();
+                        String s2 = show.getText().toString();
+                        show.setText(s2 + s1);
+                        s.add(((Button) view).getText().toString());
+                        display.setText(((Button) view).getText());
+                    } else {
+                        s.pop();
+                        s.add(((Button) view).getText().toString());
+                        display.setText(((Button) view).getText());
+                    }
                 }
 
-                if(s.peek()!=plus.getText()
-                        &&s.peek()!=minus.getText()
-                        &&s.peek()!=multiplay.getText()
-                        &&s.peek()!=div.getText()){
-                    String s1 = display.getText().toString();
-                    String s2 = show.getText().toString();
-                    show.setText(s2 + s1);
-                    s.add(((Button) view).getText().toString());
-                    display.setText(((Button) view).getText());
-            }else
-                display.setText(s.peek());
                 break;
             case R.id.c_precent:
-                String s4=display.getText().toString();
-                String s5="("+plus.getText().toString()+minus.getText().toString()
-                        +multiplay.getText().toString()+div.getText().toString()+")";
-                s4=s4.replaceAll(s5,"");
-                if(s4!=null) {
+                if(s.peek()==spot.getText()){
+                    s.pop();
+                    display.setText("");
+                }
+                if(s.empty())
+                    display.setText("");
+                else{
+                    String s4=display.getText().toString();
+                    String s5="";
+                    s5=s4.substring(0,1);
+                   if(s5!= plus.getText().toString()
+                            && s5!= minus.getText().toString()
+                            && s5!= multiplay.getText().toString()
+                            && s5!= div.getText().toString()){
+                       s5="";
+                   }else
+                       s4=s4.substring(1);
                     double d = Double.parseDouble(s4);
                     d=d/100;
-                    display.setText(String.valueOf(d));
+                    display.setText(s5+String.valueOf(d));
                 }
                 break;
             default:
