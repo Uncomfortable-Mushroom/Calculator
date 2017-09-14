@@ -12,7 +12,6 @@ import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private boolean clear_flag;
     private EditText display;
     private TextView show;
     private Stack<String> s=new Stack<String>();
