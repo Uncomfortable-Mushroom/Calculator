@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 display.setText("");
                 break;
             case R.id.c_c:
+                show.setHint("");
                 if(s!=null)
                 s.clear();
                 show.setText("");
@@ -164,7 +165,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c_equal:
                 String s0=show.getText().toString()+display.getText().toString();
                 show.setText("");
-                display.setText("计算结果为："+result(s0));
+                show.setHint(s0);
+                display.setText(result(s0));
                 break;
             default:
                 break;
@@ -176,44 +178,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayList<String> sign=new ArrayList<String>();
         String key;
         String num="";
-        for(int i=1;i<s.length();i++){
-            key=s.substring(i-1,i);
-            if(isNum(key)){
-                num=num+key;
-            }else {
-                number.add(num);
-                num="";
-                sign.add(key);
+        for(int i=1;i<=s.length();i++) {
+            key = s.substring(i - 1, i);
+            if (isNum(key)) {
+                num = num + key;
+            } else {
+                if(num!=null&&num.length()>0)
+                     number.add(num);
+                       num = "";
+                      sign.add(key);
             }
-            int j=0;
-            while (!sign.isEmpty()){
-                if(sign.get(j).equals("÷")||sign.get(j).equals("×")) {
-                    if (sign.get(j).equals("÷")) {
-                        number.set(j,
-                                String.valueOf(div(number.get(j), number.get(j + 1))));
-                        number.remove(j+1);
-                        sign.remove(j);
-                    } else{
-                        number.set(j,
-                                String.valueOf(multiplay(number.get(j), number.get(j + 1))));
-                        number.remove(j+1);
-                        sign.remove(j);
-                    }
-                }else {
-                    if(sign.get(j).equals("+")){
-                        number.set(j,
-                                String.valueOf(plus(number.get(j), number.get(j + 1))));
-                        number.remove(j+1);
-                        sign.remove(j);
-                    }else{
-                        number.set(j,
-                                String.valueOf(minus(number.get(j), number.get(j + 1))));
-                        number.remove(j+1);
-                        sign.remove(j);
+              if(i==s.length())
+                number.add(num);
+        }
+          for(int k=0;k<sign.size();k++){
+               if (sign.get(k).equals("÷")) {
+                   number.set(k,
+                           String.valueOf(div(number.get(k), number.get(k+1))));
+                   number.remove(k+1);
+                   sign.remove(k);
+                   k--;
+               } else if (sign.get(k).equals("×")){
+                   number.set(k,
+                           String.valueOf(multiplay(number.get(k), number.get(k+1))));
+                   number.remove(k+1);
+                   sign.remove(k);
+                   k--;
+               }
+           }
+        while (!sign.isEmpty()) {
+                    if(sign.get(0).equals("+")){
+                        number.set(0,
+                                String.valueOf(plus(number.get(0), number.get(1))));
+                        number.remove(1);
+                        sign.remove(0);
+                    }else if(sign.get(0).equals("-")){
+                        number.set(0,
+                                String.valueOf(minus(number.get(0), number.get(1))));
+                        number.remove(1);
+                        sign.remove(0);
                     }
                 }
-            }
-        }
         return number.get(0);
     }
     private boolean isNum(String key){
