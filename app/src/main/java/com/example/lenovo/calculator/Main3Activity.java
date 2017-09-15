@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class Main3Activity extends AppCompatActivity {
+public class Main3Activity extends BaseActivity {
 
 
     @Override

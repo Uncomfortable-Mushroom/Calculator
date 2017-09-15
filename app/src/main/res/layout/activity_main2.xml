@@ -1,9 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    <GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.calculator.Main2Activity">
+    android:layout_gravity="center"
+    android:columnCount="4"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="4"
+        android:id="@+id/show"
+        android:textSize="50dp"
+        android:layout_height="80dp"
+        />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/display"
+        android:layout_columnSpan="4"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:textAlignment="textEnd"
+        android:textSize="80dp"
+        android:hint="0"
+        android:layout_height="80dp" />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign1"
+        android:text="!"
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign2"
+        android:text="^"
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign3"
+        android:text="√"
+        />
+    <Button
+        android:textAllCaps="false"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign4"
+        android:text="π"
+        />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/c_sign5"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:text="e" />
+
+    <Button
+        android:textAllCaps="false"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign6"
+        android:text="sin"
+        />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/c_sign7"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:text="cos" />
+
+    <Button
+        android:textAllCaps="false"
+        android:id="@+id/c_sign8"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:text="tan" />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign9"
+        android:text="("
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_sign10"
+        android:text=")"
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_c"
+        android:text="C"
+        />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_x"
+        android:text="退格"
+        />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_seven"
+        android:text="7"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_eight"
+        android:text="8"
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_nine"
+        android:text="9"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_div"
+        android:text="÷" />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_four"
+        android:text="4"
+        />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_five"
+        android:text="5"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_six"
+        android:text="6"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_multiplay"
+        android:text="×" />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_one"
+        android:text="1"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_two"
+        android:text="2"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_three"
+        android:text="3"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_minus"
+        android:text="-" />
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_zero"
+        android:text="0"/>
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_spot"
+        android:text="."/>
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_equal"
+        android:text="=" />
+
+    <Button
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"
+        android:id="@+id/c_plus"
+        android:text="+"/>
+
+    </GridLayout>
+

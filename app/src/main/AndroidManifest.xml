@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity"
-            android:label="函数计算">
+            android:label="科学计算器">
             <intent-filter>
                 <action android:name="com.example.calculator.ACTION_START_ONE"/>
                 <category android:name="android.intent.category.DEFAULT"/>

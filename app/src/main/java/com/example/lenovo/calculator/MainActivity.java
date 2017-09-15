@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText display;
     private TextView show;
@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.exit:
+                ActivityCollector.finishAll();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -15,6 +15,8 @@
                      android:layout_rowWeight="1"
                      android:layout_columnSpan="4"
                      android:id="@+id/show"
+                     android:textSize="40dp"
+                     android:layout_height="80dp"
                      />
 
                  <EditText
@@ -24,6 +26,8 @@
                      android:layout_rowWeight="1"
                      android:textAlignment="textEnd"
                      android:hint="0"
+                     android:textSize="50dp"
+                     android:layout_height="80dp"
                   />
                 <Button
                     android:layout_columnWeight="1"

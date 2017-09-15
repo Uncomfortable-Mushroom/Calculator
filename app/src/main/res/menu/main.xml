@@ -5,7 +5,7 @@
             android:title="主界面"/>
         <item
                 android:id="@+id/SC"
-                android:title="函数计算" />
+                android:title="科学计算器" />
         <item
                 android:id="@+id/TR"
                 android:title="进制转换"/>

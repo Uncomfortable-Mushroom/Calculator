@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
@@ -33,6 +33,7 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.exit:
+                ActivityCollector.finishAll();
                 break;
         }
         return super.onOptionsItemSelected(item);
