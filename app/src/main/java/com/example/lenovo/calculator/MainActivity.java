@@ -1,5 +1,6 @@
 package com.example.lenovo.calculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +32,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case R.id.main:
+                Intent intent=new Intent(MainActivity.this,MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.SC:
+                Intent intent1=new Intent("com.example.calculator.ACTION_START_ONE");
+                startActivity(intent1);
+                break;
+            case R.id.TR:
+                Intent intent2=new Intent("com.example.calculator.ACTION_START_TWO");
+                startActivity(intent2);
+                break;
             case R.id.help:
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;
@@ -115,8 +128,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c_spot:
                 String s6=display.getText().toString();
                 if(s6.equals("")
-                        ||s.peek()==((Button) view).getText().toString())
-                    display.setText("0"+((Button) view).getText().toString());
+                        ||s.peek()==((Button) view).getText().toString()) {
+                    s.add("0");
+                    display.setText("0" + ((Button) view).getText().toString());
+                }
                 else
                     display.setText(s6+((Button) view).getText());
                 s.add(((Button) view).getText().toString());
@@ -150,14 +165,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.c_plus:
             case R.id.c_div:
                 if(s.empty()){
+                    s.add("0");
                     s.add(((Button) view).getText().toString());
                     show.setText(zero.getText().toString());
                     display.setText(((Button) view).getText());
                 }else {
-                    if (s.peek() != plus.getText()
-                            && s.peek() != minus.getText()
-                            && s.peek() != multiplay.getText()
-                            && s.peek() != div.getText()) {
+                    if (!s.peek().equals("÷")&&!s.peek().equals("×")&&
+                            !s.peek().equals("+")&&!s.peek().equals("-")) {
                         String s1 = display.getText().toString();
                         String s2 = show.getText().toString();
                         show.setText(s2 + s1);
@@ -173,6 +187,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.c_precent:
                     String s4=display.getText().toString();
+                     if(s4.isEmpty())
+                         s4=s4+"0";
+                    if(s4.charAt(s4.length()-1)<48||s4.charAt(s4.length()-1)>57)
+                        s4 = s4 + "0";
                     String s5=s4.substring(0,1);
                    if(s5.equals("÷")||s5.equals("×")
                            ||s5.equals("+")||s5.equals("-")){
@@ -185,7 +203,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.c_equal:
                 String s0=show.getText().toString()+display.getText().toString();
+                if(s0.isEmpty())
+                    break;
                 show.setText("");
+                if(s.peek().equals("÷")||s.peek().equals("×")||
+                        s.peek().equals("+")||s.peek().equals("-")) {
+                    s0 = s0 + "0";
+                    s.add("0");
+                }
                 show.setHint(s0);
                 display.setText(result(s0));
                 break;
