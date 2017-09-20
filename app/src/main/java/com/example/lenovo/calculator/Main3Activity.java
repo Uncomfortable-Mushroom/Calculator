@@ -35,6 +35,7 @@ public class Main3Activity extends BaseActivity {
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.exit:
+                ActivityCollector.finishAll();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.c_x:
                 String s3=display.getText().toString();
-                if(s3.length()>0)
+                if(s3.length()>0&&!s.isEmpty())
                     s.pop();
                  if(s3.length()>0&&s3!=null)
                     s3 = s3.substring(0, s3.length() - 1);

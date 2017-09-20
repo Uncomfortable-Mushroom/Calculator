@@ -21,7 +21,7 @@
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:textAlignment="textEnd"
-        android:textSize="80dp"
+        android:textSize="70dp"
         android:hint="0"
         android:layout_height="80dp" />
 
@@ -63,7 +63,7 @@
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:id="@+id/c_sign6"
-        android:text="sin"
+        android:text="sin("
         />
 
     <Button
@@ -71,14 +71,14 @@
         android:id="@+id/c_sign7"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
-        android:text="cos" />
+        android:text="cos(" />
 
     <Button
         android:textAllCaps="false"
         android:id="@+id/c_sign8"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
-        android:text="tan" />
+        android:text="tan(" />
 
     <Button
         android:layout_columnWeight="1"
