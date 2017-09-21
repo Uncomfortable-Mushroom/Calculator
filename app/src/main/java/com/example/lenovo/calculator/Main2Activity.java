@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 public class Main2Activity extends BaseActivity implements View.OnClickListener {
     @Override
@@ -46,6 +47,8 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
         return super.onOptionsItemSelected(item);
     }
 
+    private double π=Math.PI;
+    private String v;
     private TextView show,display;
     private Stack<String> s=new Stack<String>();
     private Button zero,one,two,three,four,five,six
@@ -219,7 +222,10 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
                     break;
                 show.setText("");
                 if(s.peek().equals("÷")||s.peek().equals("×")||
-                        s.peek().equals("+")||s.peek().equals("-")) {
+                        s.peek().equals("+")||s.peek().equals("-")
+                        ||s.peek().equals("^") ||s.peek().equals("√")
+                        ||s.peek().equals("s") ||s.peek().equals("c")
+                        ||s.peek().equals("t")) {
                     s0 = s0 + "0";
                     s.add("0");
                 }
@@ -230,11 +236,27 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
                 break;
         }
     }
+
     private String result(String s) {
+        int y=0,m=0;
+        //括号部分
+       /* for(int h=0;h<s.length();h++){
+            if(s.charAt(h)=='(')
+                y=h;
+            else if(s.charAt(h)==')')
+                m=h;
+            if(y!=0&&m!=0) {
+                v = result(s.substring(y, m + 1));
+                y=0;m=0;h=0;
+            }
+        }  */
+
         ArrayList<String> number=new  ArrayList<String>();
         ArrayList<String> sign=new ArrayList<String>();
         String key;
         String num="";
+        s=Simplify(s);
+
         for(int i=1;i<=s.length();i++) {
             key = s.substring(i - 1, i);
             if (isNum(key)) {
@@ -248,6 +270,50 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
             if(i==s.length())
                 number.add(num);
         }
+
+        for(int i=0;i<number.size();i++){
+            String x1=number.get(i);
+            for(int j=0;j<number.get(i).length();j++){
+                if(number.get(i).charAt(j)=='π') {
+                    number.set(i, PI(number.get(i)));
+                }
+            }
+        }
+        for(int k=0;k<sign.size();k++){
+            if(sign.get(k).equals("!")){
+                number.set(k,String.valueOf(JieCheng(number.get(k))));
+                sign.remove(k);
+                k--;
+            }
+            else if(sign.get(k).equals("^")){
+                number.set(k,
+                        String.valueOf(CiFang(number.get(k),number.get(k+1))));
+                sign.remove(k);
+                number.remove(k+1);
+                k--;
+            }
+            else if(sign.get(k).equals("√")){
+                number.set(k,String.valueOf(Sqrt(number.get(k))));
+                sign.remove(k);
+                k--;
+            }
+            else if(sign.get(k).equals("s")){
+                number.set(k+1,String.valueOf(Sin(number.get(k+1))));
+                sign.remove(k);
+                k--;
+            }
+            else if(sign.get(k).equals("c")){
+                number.set(k+1,String.valueOf(Cos(number.get(k+1))));
+                sign.remove(k);
+                k--;
+            }
+            else if(sign.get(k).equals("t")){
+                number.set(k+1,String.valueOf(Tan(number.get(k+1))));
+                sign.remove(k);
+                k--;
+            }
+        }
+
         for(int k=0;k<sign.size();k++){
             if (sign.get(k).equals("÷")) {
                 number.set(k,
@@ -278,9 +344,31 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
         }
         return number.get(0);
     }
+
+    private String Simplify(String s){
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='c'||s.charAt(i)=='t'||s.charAt(i)=='s'){
+                s= s.substring(0,i+1)+s.substring(i+3,s.length());
+            }
+        }
+        return s;
+    }
+    private String PI(String s){
+        String x;
+        /*for(int i=1;i<s.length();i++){
+            x=s.substring(i-1,i);
+            if(x.equals("π"))
+                s=s.substring(0,i);
+        } */
+        return String.valueOf(π*Double.parseDouble(s));
+    }
     private boolean isNum(String key){
         if(key.equals("÷")||key.equals("×")
-                ||key.equals("+")||key.equals("-"))
+                ||key.equals("+")||key.equals("-")
+                ||key.equals("!")||key.equals("^")
+                ||key.equals("√")||key.equals("s")
+                ||key.equals("c")||key.equals("t")
+                ||key.equals("(")||key.equals(")"))
             return false;
         return true;
     }
@@ -303,5 +391,35 @@ public class Main2Activity extends BaseActivity implements View.OnClickListener 
         double x1=Double.parseDouble(x);
         double x2=Double.parseDouble(y);
         return x1/x2;
+    }
+    private double JieCheng(String x){
+        double x1=Double.parseDouble(x);
+        double y1=1;
+        for(int i=1;i<=x1;i++){
+            y1=i*y1;
+        }
+        return y1;
+    }
+    private double CiFang(String x,String y){
+        double x1,y1;
+        x1=Double.parseDouble(x);
+        y1=Double.parseDouble(y);
+        return Math.pow(x1,y1);
+    }
+    private double Sqrt(String x){
+        double x1=Double.parseDouble(x);
+        return Math.sqrt(x1);
+    }
+    private double Sin(String x){
+        double x1=Double.parseDouble(x);
+        return Math.sin(x1);
+    }
+    private double Cos(String x){
+        double x1=Double.parseDouble(x);
+        return Math.cos(x1);
+    }
+    private double Tan(String x){
+        double x1=Double.parseDouble(x);
+        return Math.tan(x1);
     }
 }
