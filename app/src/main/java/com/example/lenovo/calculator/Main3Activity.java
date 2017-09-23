@@ -27,10 +27,6 @@ public class Main3Activity extends BaseActivity {
                 Intent intent1=new Intent("com.example.calculator.ACTION_START_ONE");
                 startActivity(intent1);
                 break;
-            case R.id.TR:
-                Intent intent2=new Intent("com.example.calculator.ACTION_START_TWO");
-                startActivity(intent2);
-                break;
             case R.id.help:
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;

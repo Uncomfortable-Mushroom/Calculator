@@ -32,10 +32,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.main:
-                Intent intent=new Intent(MainActivity.this,MainActivity.class);
-                startActivity(intent);
-                break;
             case R.id.SC:
                 Intent intent1=new Intent("com.example.calculator.ACTION_START_ONE");
                 startActivity(intent1);
