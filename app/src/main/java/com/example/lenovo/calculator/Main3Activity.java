@@ -113,17 +113,17 @@ public class Main3Activity extends BaseActivity  {
             }
         });
 
-        s3=text1.getText().toString();
 
         B=(Button)findViewById(R.id.button);
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text2.setText(Tr(s1,s2,s3));
+                s3=text1.getText().toString();
+                Tr(s1,s2,s3);
             }
         });
     }
-    private String Tr(String s1,String s2,String s3){
+    private void Tr(String s1,String s2,String s3){
         if(s1=="2进制"){
             i=Integer.valueOf(s3,2);
         }
@@ -138,17 +138,16 @@ public class Main3Activity extends BaseActivity  {
         }
 
         if(s2=="2进制"){
-            Integer.toBinaryString(i);
+            text2.setText(Integer.toBinaryString(i).toString());
         }
         else if (s2=="8进制"){
-            Integer.toOctalString(i);
+            text2.setText(Integer.toOctalString(i).toString());
         }
         else if (s2=="10进制"){
-            i=i;
+            text2.setText(String.valueOf(i));
         }
         else if (s2=="16进制"){
-            Integer.toHexString(i);
+            text2.setText(Integer.toHexString(i).toString());
         }
-        return String.valueOf(i);
     }
 }
