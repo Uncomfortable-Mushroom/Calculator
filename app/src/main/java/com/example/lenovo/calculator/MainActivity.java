@@ -40,6 +40,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Intent intent2=new Intent("com.example.calculator.ACTION_START_TWO");
                 startActivity(intent2);
                 break;
+            case R.id.DW:
+                Intent intent3 = new Intent("com.example.calculator.ACTION_START_THREE");
+                startActivity(intent3);
+                break;
             case R.id.help:
                 Toast.makeText(this,"这是帮助",Toast.LENGTH_SHORT).show();
                 break;

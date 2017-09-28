@@ -40,6 +40,10 @@ public class Main3Activity extends BaseActivity  {
                 Intent intent1 = new Intent("com.example.calculator.ACTION_START_ONE");
                 startActivity(intent1);
                 break;
+            case R.id.DW:
+                Intent intent2 = new Intent("com.example.calculator.ACTION_START_THREE");
+                startActivity(intent2);
+                break;
             case R.id.help:
                 Toast.makeText(this, "这是帮助", Toast.LENGTH_SHORT).show();
                 break;
@@ -67,7 +71,6 @@ public class Main3Activity extends BaseActivity  {
         text2.setCursorVisible(false);
         text2.setEnabled(false);
 
-
         spinner1 = (Spinner) findViewById(R.id.spinner1);
         spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -75,8 +78,8 @@ public class Main3Activity extends BaseActivity  {
         list.add("8进制");
         list.add("10进制");
         list.add("16进制");
-        adapter1=new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,list);
+        adapter1 = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, list);
         adapter1.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter1);
@@ -85,7 +88,7 @@ public class Main3Activity extends BaseActivity  {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayAdapter<String> adapter =
                         (ArrayAdapter<String>) adapterView.getAdapter();
-                s1=adapter.getItem(i);
+                s1 = adapter.getItem(i);
             }
 
             @Override
@@ -94,17 +97,17 @@ public class Main3Activity extends BaseActivity  {
             }
         });
 
-        adapter2=new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_item,list);
+        adapter2 = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, list);
         adapter2.setDropDownViewResource
                 (android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 ArrayAdapter<String> adapter =
                         (ArrayAdapter<String>) adapterView.getAdapter();
-               s2=adapter.getItem(i);
+                s2 = adapter.getItem(i);
             }
 
             @Override
@@ -113,8 +116,7 @@ public class Main3Activity extends BaseActivity  {
             }
         });
 
-
-        B=(Button)findViewById(R.id.button);
+        B = (Button) findViewById(R.id.button);
         B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,6 +124,7 @@ public class Main3Activity extends BaseActivity  {
                 Tr(s1,s2,s3);
             }
         });
+
     }
     private void Tr(String s1,String s2,String s3){
         if(s1=="2进制"){
