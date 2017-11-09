@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Calculator"
             android:label="计算器">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name=".ScienceCalculator"
             android:label="科学计算器">
             <intent-filter>
                 <action android:name="com.example.calculator.ACTION_START_ONE" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Main3Activity"
+            android:name=".TrHex"
             android:label="进制转换">
             <intent-filter>
                 <action android:name="com.example.calculator.ACTION_START_TWO" />
@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main4Activity"
+        <activity android:name=".TR"
             android:label="单位转换">
             <intent-filter>
                 <action android:name="com.example.calculator.ACTION_START_THREE" />

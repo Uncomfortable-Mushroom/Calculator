@@ -1,8 +1,9 @@
 package com.example.lenovo.calculator;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main4Activity extends BaseActivity {
+public class TR extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -28,7 +29,7 @@ public class Main4Activity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main:
-                Intent intent = new Intent(Main4Activity.this, MainActivity.class);
+                Intent intent = new Intent(TR.this, Calculator.class);
                 startActivity(intent);
                 break;
             case R.id.SC:
@@ -59,7 +60,7 @@ public class Main4Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.tr);
         text1 = (EditText) findViewById(R.id.text1);
         text2 = (EditText) findViewById(R.id.text2);
         text2.setCursorVisible(false);
@@ -134,9 +135,26 @@ public class Main4Activity extends BaseActivity {
 
             }
         });
-
-        B = (Button) findViewById(R.id.button);
-        B.setOnClickListener(new View.OnClickListener() {
+////        s3 = text1.getText().toString();
+////        TR(s, s1, s2, s3);
+//        text1.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                s3 = text1.getText().toString();
+//                TR(s, s1, s2, s3);
+//            }
+//        });
+       B = (Button) findViewById(R.id.button);B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 s3 = text1.getText().toString();

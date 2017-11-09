@@ -1,9 +1,6 @@
 package com.example.lenovo.calculator;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.os.Bundle;
@@ -13,14 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.Stack;
 import java.util.ArrayList;
 
-public class Main3Activity extends BaseActivity  {
+public class TrHex extends BaseActivity  {
 
 
     @Override
@@ -33,7 +28,7 @@ public class Main3Activity extends BaseActivity  {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main:
-                Intent intent = new Intent(Main3Activity.this, MainActivity.class);
+                Intent intent = new Intent(TrHex.this, Calculator.class);
                 startActivity(intent);
                 break;
             case R.id.SC:
@@ -65,7 +60,7 @@ public class Main3Activity extends BaseActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.tr_hex);
         text1 = (EditText) findViewById(R.id.text1);
         text2 = (EditText) findViewById(R.id.text2);
         text2.setCursorVisible(false);

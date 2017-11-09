@@ -1,7 +1,6 @@
 package com.example.lenovo.calculator;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class Calculator extends BaseActivity implements View.OnClickListener {
 
     private EditText display;
     private TextView show;
@@ -57,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.calculator);
 
         display=(EditText) findViewById(R.id.display);
         display.setCursorVisible(false);
